@@ -69,10 +69,7 @@ namespace ApiAggregator.Services
                     CoinGeckoPrice = await coinGeckoPriceTask,
                 };
 
-                var cacheEntryOptions = new MemoryCacheEntryOptions().SetSlidingExpiration(TimeSpan.FromMinutes(30));
-
-                _cache.Set($"{location}_{newsCountry}_{gitHubUsername}_{cryptoIds}_{cryptoCurrency}", aggregatedData, cacheEntryOptions);
-
+             
                 _logger.LogInformation("Successfully retrieved aggregated data for location: {Location}, newsCountry: {NewsCountry}, gitHubUsername: {GitHubUsername}, cryptoIds: {CryptoIds}, cryptoCurrency: {CryptoCurrency}", location, newsCountry, gitHubUsername, cryptoIds, cryptoCurrency);
 
                 return aggregatedData;
